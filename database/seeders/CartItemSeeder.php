@@ -20,19 +20,16 @@ class CartItemSeeder extends Seeder
         
         $users= User::all();
         $stores= Store::all();
+        
 
-        $qtd_cart= 300;
+        $stores->each( function( $store ) use($users) {
 
-        for($i=0; $i < $qtd_cart; $i++ ){
-            
-            $qtd_itens= rand(5,15);
-            $store= $stores->random();
-            $ps= ProductStore::where('store_id', $store->id)->get();
             $user= $users->random();
+            $qtdItens= rand(5,15);
+            $ps= ProductStore::where('store_id', $store->id)->get();
             $cart= CartItem::latest('id')->value('id') + 1;
 
-
-            for($j=0; $j<$qtd_itens; $j++){
+            for($i=0; $i < $qtdItens; $i++){
 
                 $product_store= $ps->random();
                 
@@ -41,9 +38,9 @@ class CartItemSeeder extends Seeder
                     'user_id'=> $user->id,
                     'product_store_id' => $product_store->id,
                     'price'=> $product_store->price,
-                    //'amount'=> rand(1,5),
                 ]);
-            }     
-        }
+            }
+        } );
+
     }
 }

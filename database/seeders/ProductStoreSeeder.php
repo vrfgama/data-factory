@@ -17,28 +17,24 @@ class ProductStoreSeeder extends Seeder
      */
     public function run(): void
     {
-        
-        $products= Product::all();
-        $stores= Store::all();
 
-        foreach($stores as $store){
+        $products = Product::all();
+        $stores = Store::all();
 
-            $qtd= rand(20, 200);
+        $stores->each(function ($store) use ($products) {
+            
+            $qtd = rand(20, 200);
 
-            for($i=0; $i < $qtd; $i++){
+            for ($i = 0; $i < $qtd; $i++) {
 
-                $product= $products->random();
+                $product = $products->random();
 
-                ProductStore::factory(1)->create([
-
+                ProductStore::factory()->create([
                     'store_id' => $store->id,
                     'product_id' => $product->id,
-                
                 ]);
-
             }
-
-        }
+        });
 
     }
 }

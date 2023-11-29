@@ -15,23 +15,10 @@ class StoreSeeder extends Seeder
      */
     public function run(): void
     {
-        /*
-        $count= 500;
 
-        for($i=0; $i < $count; $i++){
+        $numberStoreBrand= rand(40,80);
 
-            $rand= rand(1,6);
-
-            StoreBrand::factory(1)
-                ->has(Store::factory(rand(1,6))
-                    ->has(StoreAddress::factory(1)))
-            ->create();
-
-        }
-        */
-
-
-        StoreBrand::factory(50)->create()->each( function( $storeBrand ){
+        StoreBrand::factory($numberStoreBrand)->create()->each( function( $storeBrand ){
 
             Store::factory(rand(1,6))->has(StoreAddress::factory())->create([
                 'store_brand_id' => $storeBrand->id

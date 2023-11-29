@@ -17,13 +17,16 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         
-        $categories = Category::factory(100)->create();
+        $numberCategories= rand(50,100);
+        $numberProductBrand= rand(80,160);
 
-        ProductBrand::factory(90)->create()->each(function ($productBrand) use ($categories) {
+        $categories = Category::factory($numberCategories)->create();
 
-            $numberOfProducts = rand(1, 500);
+        ProductBrand::factory($numberProductBrand)->create()->each(function ($productBrand) use ($categories) {
 
-            Product::factory($numberOfProducts)->create([
+            $numberProducts = rand(1, 500);
+
+            Product::factory($numberProducts)->create([
                 'product_brand_id' => $productBrand->id,
                 'category_id' => $categories->random()->id,
             ]);

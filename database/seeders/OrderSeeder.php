@@ -14,28 +14,31 @@ class OrderSeeder extends Seeder
      */
     public function run(): void
     {
-        $cart_item= CartItem::all();
-        $qtd_order= rand(100,300);
+        
+        $numberOrders = rand(200,300);
+        
+        for( $i=0; $i < $numberOrders; $i++ ){
 
+            $order= Order::all();
+            $cartItemRandom= CartItem::inRandomOrder()->first();
 
-        for( $i=0; $i < $qtd_order; $i++ ){
+            if( ! $order->contains('cart_item_id', $cartItemRandom->id) ){
 
-            $cartItemRandom= $cart_item->random();
-            $cart= CartItem::where('id', $cartItemRandom->id)->get();
-            $tt_item= $cart->sum('amount');
-            $tt_price= 0;
+                $totalItens= CartItem::where('id', $cartItemRandom->id)->sum('amount');
+                $cart= CartItem::where('id', $cartItemRandom->id)->get();
+                $totalPrice= 0;
 
-            foreach($cart as $cart){
-                $tt_price+= $cart->amount * $cart->price;
+                foreach( $cart as $cart ){
+                    $totalPrice+= $cart->amount * $cart->price;
+                }
+
+                Order::factory(1)->create([
+                    'total_price'=> $totalPrice,
+                    'total_itens'=> $totalItens,
+                    'cart_item_id'=> $cart->id,
+                ]);
             }
 
-            Order::factory(1)->create([
-                'total_price'=> $tt_price,
-                'total_itens'=> $tt_item,
-                'cart_item_id'=> $cart->id,
-            ]);
-
         }
-
     }
 }
