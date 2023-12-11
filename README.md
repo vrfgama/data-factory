@@ -1,66 +1,25 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Data Factory
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este projeto foi criado com o intuito de obter uma base de dados com um grande número de registros para desenvolvimento de projetos em Excel e PowerBi, já que as bases de dados disponíveis na internet não atendiam minhas espectativas.
 
-## About Laravel
+Esta massa de dados é criada por meio das factories, seeders e migrations do Laravel, que concebem as tabelas como também persistem os registros no banco o populando. Os registros são criados utilizando a biblioteca do Faker
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Este projeto tem alguma lógica implementada nas Models para definir o relacionamento entre as tabelas e tb utilização dos métodos do Eloquent, mas não possue controllers ou rotas. Nas factories existe uma lógica para implementar a natureza dos registros do banco para garantir alguma harmonia nos dados, como pode ser observado em UserFactory; foi implementada uma lógica para o campo email ser populado com os mesmos dados do campo nome, como também os usuários masculinos terem nomes masculinos e vice-versa. Nos seeders foi definido os relacionamentos e quantidade de registros a serem criados.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+[![](https://mermaid.ink/img/pako:eNp1ks9uwyAMxl8F-Zy-QK7dddqkapcJCXmx2yE1UBk4TEnefVBo1fQPnAw_vs_YnmDwxNADy5vFg-ConXYqr6_AEtQ8bzbzdA4MknAIHFSvNOT9iG2FyUYzoNAVqtgu-vxYLYWba2R-BB2t1RrW5Cr2YFvRT_GUhnjVbPFaVT1ntxj54MW-EjWhON8przN9Srb0X3OXOqFEYyO7e_-bi4Z-CJUCr75zQzXj2oUGQQcjy4iWcl-n8kRD_OWRNRSCeI_pGIvpklFM0e_-3AB9lMQdpBPl6rRhgH6Px5BPS1-9vNdZOY9MByd0395fmOUf9inBxQ?type=png)](https://mermaid.live/edit#pako:eNp1ks9uwyAMxl8F-Zy-QK7dddqkapcJCXmx2yE1UBk4TEnefVBo1fQPnAw_vs_YnmDwxNADy5vFg-ConXYqr6_AEtQ8bzbzdA4MknAIHFSvNOT9iG2FyUYzoNAVqtgu-vxYLYWba2R-BB2t1RrW5Cr2YFvRT_GUhnjVbPFaVT1ntxj54MW-EjWhON8przN9Srb0X3OXOqFEYyO7e_-bi4Z-CJUCr75zQzXj2oUGQQcjy4iWcl-n8kRD_OWRNRSCeI_pGIvpklFM0e_-3AB9lMQdpBPl6rRhgH6Px5BPS1-9vNdZOY9MByd0395fmOUf9inBxQ)
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Tecnologias Utilizadas
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+php 8.2
+laravel 10
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+biblioteca faker:
+https://fakerphp.github.io/
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-### Premium Partners
+## ⚠️ Problemas enfrentados
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Aleatoriamente o Faker pode repetir registros, dependendo da construção do banco isso pode quebrar a execução. No meu caso a tabela Users tem um campo email que só admite dados únicos.
